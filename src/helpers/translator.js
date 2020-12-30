@@ -43,19 +43,12 @@ function Translator(translations,defaultLanguage){
 }
 
 const constantDictionaryReader = (defaultLanguage,language,dictionary,translationObject) => {
-    let dic = getSubObject(translationObject,dictionary);
-    if (dic){
-        if(dic[language]){
-            return dic[language]
-        }
-        else if (dic[defaultLanguage]){
-            return dic[defaultLanguage]
-        }
-        return "Error 4" // Language AND default language not found on dictionary
-    }
-    else{
-      return "Error 2"; // invalid path or dictionary
-    }
+
+    const dic = getSubObject(translationObject,dictionary);
+
+    if (dic) return dic;
+
+    return "Error Translation";
 }
 
 const dynamicDictionaryReader = (defaultLanguage,language,dictionary) => {
